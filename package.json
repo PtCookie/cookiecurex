@@ -18,22 +18,16 @@
     ],
     "scripts": {
         "prepare": "husky install",
-        "test": "yarn node --experimental-vm-modules $(yarn bin jest)",
-        "test:watch": "yarn node --experimental-vm-modules --no-warnings $(yarn bin jest) --watchAll",
-        "test:coverage": "yarn node --experimental-vm-modules $(yarn bin jest) --coverage"
+        "build": "yarn workspaces foreach run build",
+        "test": "yarn workspaces foreach run test",
+        "test:coverage": "yarn workspaces foreach run test:coverage"
     },
     "devDependencies": {
-        "@babel/core": "^7.16.7",
-        "@babel/preset-env": "^7.16.8",
-        "@babel/preset-typescript": "^7.16.7",
-        "@types/jest": "^27.4.0",
         "@typescript-eslint/eslint-plugin": "^5.9.1",
         "@typescript-eslint/parser": "^5.9.1",
-        "babel-jest": "^27.4.6",
         "eslint": "^8.6.0",
         "eslint-config-prettier": "^8.3.0",
         "husky": "^7.0.4",
-        "jest": "^27.4.7",
         "prettier": "^2.5.1",
         "typescript": "^4.5.4"
     },
@@ -62,13 +56,5 @@
     "lint-staged": {
         "*.{ts,tsx}": "eslint --cache --fix",
         "*.{ts,tsx,yml,md}": "prettier --write"
-    },
-    "jest": {
-        "collectCoverageFrom": [
-            "src/**/*.{ts,tsx}"
-        ],
-        "projects": [
-            "<rootDir>/packages/*"
-        ]
     }
 }

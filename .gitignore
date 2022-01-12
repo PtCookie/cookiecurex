@@ -25,6 +25,7 @@ lib
 
 # misc
 .DS_Store
+.eslintcache
 
 # debug
 yarn-debug.log*
