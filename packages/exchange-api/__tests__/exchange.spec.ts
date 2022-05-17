@@ -6,8 +6,8 @@ describe('Exchange function test', () => {
 
     expect(result).toHaveProperty('rate');
     expect(result).toHaveProperty('amount');
-    expect(result.rate).not.toBeNaN();
-    expect(result.amount).not.toBeNaN();
+    expect(result?.rate).not.toBeNaN();
+    expect(result?.amount).not.toBeNaN();
   });
 
   it('should make currency lowercase', async () => {
@@ -15,8 +15,8 @@ describe('Exchange function test', () => {
 
     expect(result).toHaveProperty('rate');
     expect(result).toHaveProperty('amount');
-    expect(result.rate).not.toBeNaN();
-    expect(result.amount).not.toBeNaN();
+    expect(result?.rate).not.toBeNaN();
+    expect(result?.amount).not.toBeNaN();
   });
 
   it('should return empty object when wrong input', async () => {
@@ -24,7 +24,7 @@ describe('Exchange function test', () => {
 
     expect(result).toHaveProperty('rate');
     expect(result).toHaveProperty('amount');
-    expect(result.rate).toEqual(0);
-    expect(result.amount).toEqual(0);
+    expect(result?.rate).toEqual(0);
+    expect(result?.amount).toEqual(0);
   });
 });
