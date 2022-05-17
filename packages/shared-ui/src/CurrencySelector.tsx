@@ -1,80 +1,43 @@
 import React from 'react';
 
-import { Autocomplete, CircularProgress, TextField } from '@mui/material';
+import { Autocomplete, TextField } from '@mui/material';
 
-interface Currency {
+export interface Currency {
   code: string;
   name: string;
 }
 
-function sleep(delay = 0) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay);
-  });
+interface Props {
+  options: Currency[];
+  value?: Currency | null;
+  onChange?: (event: React.SyntheticEvent, value: Currency | null) => void;
+  open: boolean;
+  onOpen?: (event: React.SyntheticEvent) => void;
+  onClose?: (event: React.SyntheticEvent) => void;
 }
 
-function CurrencySelector() {
-  const [open, setOpen] = React.useState<boolean>(false);
-  const [options, setOptions] = React.useState<Currency[]>([]);
-  const loading = open && options.length === 0;
-
-  React.useEffect(() => {
-    let active = true;
-
-    if (!loading) {
-      return undefined;
-    }
-
-    (async () => {
-      await sleep(1e2);
-
-      if (active) {
-        setOptions([{ code: 'krw', name: 'South Korean won' }]);
-      }
-    })();
-
-    return () => {
-      active = false;
-    };
-  }, [loading]);
-
-  React.useEffect(() => {
-    if (!open) {
-      setOptions([]);
-    }
-  }, [open]);
-
+export function CurrencySelector({ options = [], value, onChange, open, onOpen, onClose }: Props) {
   return (
     <Autocomplete
       sx={{ width: 300 }}
+      value={value}
+      onChange={onChange}
       open={open}
-      onOpen={() => {
-        setOpen(true);
-      }}
-      onClose={() => {
-        setOpen(false);
-      }}
+      onOpen={onOpen}
+      onClose={onClose}
       isOptionEqualToValue={(option, value) => option.code === value.code}
       getOptionLabel={(option) => option.name}
       options={options}
-      loading={loading}
       renderInput={(params) => (
         <TextField
           {...params}
           label={'Currency'}
           InputProps={{
             ...params.InputProps,
-            endAdornment: (
-              <React.Fragment>
-                {loading ? <CircularProgress color={'inherit'} size={20} /> : null}
-                {params.InputProps.endAdornment}
-              </React.Fragment>
-            ),
+            endAdornment: <React.Fragment>{params.InputProps.endAdornment}</React.Fragment>,
           }}
         />
       )}
     />
   );
 }
-
-export default CurrencySelector;

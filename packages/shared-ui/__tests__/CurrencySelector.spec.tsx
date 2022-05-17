@@ -1,44 +1,42 @@
 import React from 'react';
-import { fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
-import CurrencySelector from '../src/CurrencySelector';
+import { Currency, CurrencySelector } from '../src';
 
 describe('Currency selector test', () => {
+  const options: Currency[] = [{ code: 'krw', name: 'South Korean won' }];
+
   it('should render placeholder text', () => {
-    render(<CurrencySelector />);
+    // Arrange
+    render(<CurrencySelector options={options} open={false} />);
+
+    // Act
     const element = screen.getByLabelText(/Currency/i);
 
+    // Assert
     expect(element).toBeInTheDocument();
   });
 
-  it('should render loading text', async () => {
+  it('should render currency name', async () => {
     // Arrange
-    const { container } = render(<CurrencySelector />);
-    const button = container.querySelector('button') as HTMLButtonElement;
+    render(<CurrencySelector options={options} open={true} />);
 
     // Act
-    fireEvent.click(button);
-
-    await waitFor(() => screen.getByRole('progressbar'));
+    const element = screen.getByText(/South Korean won/i);
 
     // Assert
-    expect(screen.getByText(/Loading/i)).toBeInTheDocument();
+    expect(element).toBeInTheDocument();
   });
 
   it('should render selected value', async () => {
     // Arrange
-    const { container } = render(<CurrencySelector />);
-    const button = container.querySelector('button') as HTMLButtonElement;
+    const { container } = render(<CurrencySelector options={options} value={options[0]} open={false} />);
 
     // Act
-    fireEvent.click(button);
-
-    await waitFor(() => screen.getByText('South Korean won'));
-
-    fireEvent.click(screen.getByText('South Korean won'));
+    const element = container.querySelector('input');
 
     // Assert
-    expect(container.querySelector('input')).toHaveValue('South Korean won');
+    expect(element).toHaveValue('South Korean won');
   });
 });
