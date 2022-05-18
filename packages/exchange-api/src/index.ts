@@ -1,3 +1,2 @@
-import exchange from './exchange.js';
-
-export { exchange as default };
+export { currencyList } from './currencyList.js';
+export { exchange } from './exchange.js';

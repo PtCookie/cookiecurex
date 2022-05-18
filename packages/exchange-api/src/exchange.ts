@@ -1,14 +1,6 @@
-import fetch from 'node-fetch';
+import invokeApi from './invokeApi.js';
 
-import RateDate from './RateDate.js';
-
-type ApiVersion = number;
 type Currency = string;
-type Extension = 'min.json' | 'json';
-
-const apiEndpoint = 'https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api';
-const apiVersion: ApiVersion = 1;
-const extension: Extension = 'json';
 
 async function exchange(
   amount: number,
@@ -19,14 +11,12 @@ async function exchange(
   rate: number;
   amount: number;
 } | void> {
-  const dateStr = date !== 'latest' ? new RateDate(date).toString() : date;
   const fromLowerCase = from.toLowerCase();
   const toLowerCase = to.toLowerCase();
-  const apiURLString = `${apiEndpoint}@${apiVersion}/${dateStr}/currencies/${fromLowerCase}/${toLowerCase}.${extension}`;
-  const apiURL = new URL(apiURLString);
+  const apiEndpoint = `currencies/${fromLowerCase}/${toLowerCase}`;
 
   try {
-    const apiResponse = await fetch(apiURL.toString());
+    const apiResponse = await invokeApi(date, apiEndpoint);
 
     if (apiResponse.status !== 200) {
       return {
@@ -42,10 +32,10 @@ async function exchange(
         amount: Number(amount) * exchangeRate,
       };
     }
-  } catch (error: unknown) {
+  } catch (error) {
     console.log("Can't fetch API return.");
     console.log((error as Error).toString());
   }
 }
 
-export default exchange;
+export { exchange };
