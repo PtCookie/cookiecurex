@@ -1,4 +1,4 @@
-import currencyList from '../src/currencyList';
+import { currencyList } from '../src';
 
 describe('Currency list function test', () => {
   it('should return currency list', async () => {
