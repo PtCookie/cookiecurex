@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises';
 import { format } from 'date-fns';
 import { Command } from 'commander';
 import chalk from 'chalk';
-import exchange from 'exchange-api';
+import { exchange } from 'exchange-api';
 
 class App {
   #program: Command;

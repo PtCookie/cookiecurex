@@ -38,4 +38,4 @@ async function exchange(
   }
 }
 
-export default exchange;
+export { exchange };

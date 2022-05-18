@@ -15,4 +15,4 @@ async function currencyList(date: number | string | Date = 'latest'): Promise<Re
   }
 }
 
-export default currencyList;
+export { currencyList };
