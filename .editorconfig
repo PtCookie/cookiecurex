@@ -10,5 +10,5 @@ max_line_length = 120
 [*.json]
 indent_size = 4
 
-[*.{js,jsx,ts,tsx,yml}]
+[*.{ts,tsx}]
 indent_size = 2

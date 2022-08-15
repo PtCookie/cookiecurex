@@ -46,7 +46,12 @@
             ".ts"
         ],
         "transform": {
-            "^.+\\.[t|j]s$": "../../scripts/jest-transformer.js"
+            "^.+\\.[t|j]s$": [
+                "babel-jest",
+                {
+                    "rootMode": "upward"
+                }
+            ]
         },
         "moduleNameMapper": {
             "^(\\.{1,2}/.*)\\.js$": "$1"

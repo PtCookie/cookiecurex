@@ -56,7 +56,24 @@
         ],
         "testEnvironment": "jest-environment-jsdom",
         "transform": {
-            "^.+\\.[t|j]sx?$": "../../scripts/jest-react-transformer.js"
+            "^.+\\.[t|j]sx?$": [
+                "babel-jest",
+                {
+                    "rootMode": "upward",
+                    "presets": [
+                        [
+                            "@babel/preset-env",
+                            {
+                                "targets": {
+                                    "node": "current"
+                                }
+                            }
+                        ],
+                        "@babel/preset-typescript",
+                        "@babel/preset-react"
+                    ]
+                }
+            ]
         },
         "moduleNameMapper": {
             "^(\\.{1,2}/.*)\\.js$": "$1"
