@@ -6,7 +6,7 @@
     "license": "MIT",
     "author": {
         "name": "PtCookie",
-        "email": "ptcookie@outlook.com",
+        "email": "dev@ptcookie.dev",
         "url": "https://blog.ptcookie.dev/"
     },
     "exports": "./dist/curex.js",

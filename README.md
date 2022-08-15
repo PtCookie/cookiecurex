@@ -4,7 +4,6 @@
 
 ## Develop environment
 
-- WebStorm 2021.3.1
 - Node.js v16.13.1
 - Yarn v3.1.1
 
