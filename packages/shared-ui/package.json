@@ -21,29 +21,29 @@
         "test:watch": "yarn run test --watchAll"
     },
     "dependencies": {
-        "@emotion/react": "^11.9.0",
-        "@emotion/styled": "^11.8.1",
-        "@mui/material": "^5.8.0",
-        "react": "^18.1.0",
-        "react-dom": "^18.1.0"
+        "@emotion/react": "^11.10.0",
+        "@emotion/styled": "^11.10.0",
+        "@mui/material": "^5.10.0",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.17.12",
-        "@babel/preset-env": "^7.17.12",
-        "@babel/preset-react": "^7.17.12",
-        "@babel/preset-typescript": "^7.17.12",
-        "@emotion/jest": "^11.9.1",
-        "@testing-library/jest-dom": "^5.16.4",
-        "@testing-library/react": "^13.2.0",
-        "@types/jest": "^27.5.1",
-        "@types/react": "^18.0.9",
-        "@types/react-dom": "^18.0.4",
-        "@types/testing-library__jest-dom": "^5.14.3",
-        "babel-jest": "^28.1.0",
+        "@babel/core": "^7.18.10",
+        "@babel/preset-env": "^7.18.10",
+        "@babel/preset-react": "^7.18.6",
+        "@babel/preset-typescript": "^7.18.6",
+        "@emotion/jest": "^11.10.0",
+        "@testing-library/jest-dom": "^5.16.5",
+        "@testing-library/react": "^13.3.0",
+        "@types/jest": "^28.1.6",
+        "@types/react": "^18.0.17",
+        "@types/react-dom": "^18.0.6",
+        "@types/testing-library__jest-dom": "^5.14.5",
+        "babel-jest": "^28.1.3",
         "browserlist": "^1.0.1",
-        "jest": "^28.1.0",
-        "jest-environment-jsdom": "^28.1.0",
-        "typescript": "^4.6.4"
+        "jest": "^28.1.3",
+        "jest-environment-jsdom": "^28.1.3",
+        "typescript": "^4.7.4"
     },
     "jest": {
         "collectCoverageFrom": [
